@@ -1,25 +1,52 @@
-const TEXT_COUNT_POST = 'TEXT-COUNT-POST';
-const NEW_ADD_POST = 'NEW-ADD-POST';
+const NEW_MESSAGE_ADD = 'NEW-MESSAGE-ADD';
+const TEXT_COUNT_MES = 'TEXT-COUNT-MES';
 
 
-const profileReducer = (state, action) => {
-
-    if (action.type === NEW_ADD_POST) {
-        const post = {
-            id: 5,
-            message: state.textAreaVal,
-            likesCount: 0
-        };
-        state.posts.push(post);
-        state.textAreaVal = '';
-    } else if (action.type === TEXT_COUNT_POST) {
-        state.textAreaVal = action.val;
-    }
-    return state;
+const initialState = {
+    dialogs: [
+        {id: 1, name: "Vasiliy"},
+        {id: 2, name: "Valerka"},
+        {id: 3, name: "Jonne"},
+        {id: 4, name: "Missi"},
+        {id: 5, name: "Octobus"}
+    ],
+    messages: [
+        {id: 1, message: "How are you?"},
+        {id: 2, message: "I am the best"},
+        {id: 3, message: "Who are you?"},
+        {id: 4, message: "When you going home"},
+        {id: 5, message: "Oki doki"}
+    ],
+    newMessageText: ''
 }
 
-export const createActionTextCountPost = (text) => ({type: TEXT_COUNT_POST, val: text});
+const messagesReducer = (state = initialState, action) => {
 
-export const createActionAddPost = () => ({type: NEW_ADD_POST});
+    switch (action.type) {
+        case NEW_MESSAGE_ADD: {
+            const message = {
+                id: 6,
+                message: state.newMessageText,
+            };
+            let stateCopy = {...state};
+            stateCopy.messages = [...state.messages];
+            stateCopy.messages.push(message);
+            stateCopy.newMessageText = '';
+            return stateCopy;
+        }
+        case TEXT_COUNT_MES: {
+            let stateCopy = {...state};
+            stateCopy.newMessageText = action.text;
+            return stateCopy;
+        }
+        default:
+            return state;
 
-export default profileReducer;
+    }
+}
+
+    export const createActionNewMessageAdd = () => ({type: NEW_MESSAGE_ADD});
+
+    export const createActionTextCountMess = (text) => ({type: TEXT_COUNT_MES, text: text});
+
+    export default messagesReducer;

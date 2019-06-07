@@ -1,10 +1,10 @@
 import React from 'react';
-import s from './Header.module.css';
+import s from './Friends.module.css';
 
-const Header = () => {
-    return <header className={s.header}>
-        <img src='https://www.freelogodesign.org/Content/img/logo-ex-7.png' />
-    </header>
+const Friends = () => {
+    return <div className={s.friends}>
+        <p>Friends</p>
+    </div>
 }
 
-export default Header;
+export default Friends;

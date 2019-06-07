@@ -1,10 +1,11 @@
 import React from 'react';
-import s from './Header.module.css';
+import s from './Music.module.css';
 
-const Header = () => {
-    return <header className={s.header}>
-        <img src='https://www.freelogodesign.org/Content/img/logo-ex-7.png' />
-    </header>
+const Music = (props) => {
+    return (
+        <p>
+            Lets go sing
+        </p>)
 }
 
-export default Header;
+export default Music;

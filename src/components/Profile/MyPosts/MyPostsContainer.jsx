@@ -1,25 +1,20 @@
 import React from 'react';
-import {createActionAddPost, createActionTextCountPost} from "../../../redux/profileReducer";
+import {createActionAddPost} from "../../../redux/profileReducer";
 import MyPosts from "./MyPosts";
 import {connect} from "react-redux";
 
 
 const mapStateToProps = (state) => {
     return {
-        posts: state.profilePage.posts,
-        textValue: state.profilePage.textAreaVal
+        posts: state.profilePage.posts
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addPost: () => {
-            dispatch(createActionAddPost())
+        addPost: (newTextMessage) => {
+            dispatch(createActionAddPost(newTextMessage))
         },
-        textChange: (text) => {
-            let action = createActionTextCountPost(text);
-            dispatch(action)
-        }
     }
 };
 

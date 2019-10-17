@@ -1,0 +1,25 @@
+.wrapperProf {
+    margin-bottom: 20px;
+}
+
+.fullName {
+    margin: 0;
+}
+
+.avatar {
+    width: 85px;
+}
+
+.selectedPage {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.preloader {
+    width: 100px;
+}
+
+.paginator {
+    cursor: pointer;
+    margin-right: 5px;
+}

@@ -1,14 +1,25 @@
 import React from 'react';
+import Preloader from "../../common/Preloader/Preloader";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
+
+    if(!props.userProfile) {
+        return <Preloader />
+    }
 
     return (
         <div>
             <div>
-                <img src='https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&h=350' />
-            </div>
-            <div>
-                ava + description
+                <img src={props.userProfile.photos.large} alt=""/>
+                <ProfileStatusWithHooks  status={props.status} updateUserStatus={props.updateUserStatus}/>
+                <div>Кто я: {props.userProfile.aboutMe}</div>
+                <div>Мои любимые соцю сети:{" "}
+                    {props.userProfile.contacts.facebook},{" "}
+                    {props.userProfile.contacts.vk},{" "}
+                    {props.userProfile.contacts.twitter},{" "}
+                    {props.userProfile.contacts.instagram}
+                </div>
             </div>
         </div>
     )

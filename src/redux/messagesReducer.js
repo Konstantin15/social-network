@@ -1,5 +1,4 @@
 const NEW_MESSAGE_ADD = 'NEW-MESSAGE-ADD';
-const TEXT_COUNT_MES = 'TEXT-COUNT-MES';
 
 
 const initialState = {
@@ -17,36 +16,27 @@ const initialState = {
         {id: 4, message: "When you going home"},
         {id: 5, message: "Oki doki"}
     ],
-    newMessageText: ''
 }
 
 const messagesReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case NEW_MESSAGE_ADD: {
+        case NEW_MESSAGE_ADD:
             const message = {
                 id: 6,
-                message: state.newMessageText,
+                message: action.newMessageDialogs
             };
-            let stateCopy = {...state};
-            stateCopy.messages = [...state.messages];
-            stateCopy.messages.push(message);
-            stateCopy.newMessageText = '';
-            return stateCopy;
-        }
-        case TEXT_COUNT_MES: {
-            let stateCopy = {...state};
-            stateCopy.newMessageText = action.text;
-            return stateCopy;
-        }
+            return {
+                ...state,
+                messages: [...state.messages, message],
+            };
+
         default:
             return state;
 
     }
 }
 
-    export const createActionNewMessageAdd = () => ({type: NEW_MESSAGE_ADD});
-
-    export const createActionTextCountMess = (text) => ({type: TEXT_COUNT_MES, text: text});
+    export const createActionNewMessageAdd = (newMessageDialogs) => ({type: NEW_MESSAGE_ADD, newMessageDialogs});
 
     export default messagesReducer;
